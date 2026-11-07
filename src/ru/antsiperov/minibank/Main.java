@@ -1,5 +1,7 @@
 package ru.antsiperov.minibank;
+
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("===== MINI-BANK =====\n" +
@@ -15,9 +17,16 @@ public class Main {
         System.out.print("Выберите пункт: ");
         Scanner scan = new Scanner(System.in);
         String variant = scan.nextLine();
-        switch(variant) {
+        System.out.println();
+        switch (variant) {
             case "1":
-                System.out.println("=== Открыть счёт ===");
+                System.out.println("=== Открыть счёт ===\n");
+                System.out.print("Введите имя владельца: ");
+                String name = scan.nextLine();
+                Account own = new Account(name);
+                System.out.println();
+                System.out.printf("Благодарим за доверие, %s\n" +
+                        "Ваш номер счёта: %s\n", own.owner, own.number);
                 break;
             case "2":
                 System.out.println("=== Пополнить счёт ===");
@@ -42,7 +51,7 @@ public class Main {
                 break;
             default:
                 System.out.println("Введено некорректное значение");
-
         }
+        scan.close();
     }
 }
